@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useDispatch } from 'react-redux';
-import { setFilm } from './redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import Arrows from './Arrows';
+import Films from './Films';
+import Favorites from './Favorites';
+
 
 function App() {
-  const dispatch = useDispatch();
-  function click() {
-    dispatch(setFilm('Mist'));
-  }
+  const favorites = useSelector((state: string[]) => state);
+  
   return (
     <div className="App">
-      <button onClick={click}>Click</button>
+      <Arrows />
+      <Films />
+      <Favorites />
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

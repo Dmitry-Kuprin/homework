@@ -3,10 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { filmReducer } from './reducers';
 import thunkMiddleware from 'redux-thunk';
 
-const preloadedState = window.localStorage.getItem('redux') ?? '{}';
+// const preloadedState = [];
 
 const store = createStore((filmReducer),
-  JSON.parse(preloadedState),
+  
   composeWithDevTools(applyMiddleware(thunkMiddleware)),
 );
 
