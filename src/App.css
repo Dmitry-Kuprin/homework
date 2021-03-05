@@ -38,13 +38,32 @@
 }
 
 .wrapper {
-  width: 102px;
-  height: 204px;
-  border: 1px solid black;
+  width: 34px;
+  height: 68px;
+  background-color: black;
 }
 
-.button {
-  width: 100px;
-  height: 100px;
-  border: 1px solid orange;
+.buttonUp {
+  width: 34px;
+  height: 33px;
+  background: #1F90E6 url('vector.svg') no-repeat center;
+  border-top-left-radius: 7px;
+  border-bottom: 1px solid #1078C8;
+}
+
+.buttonDown {
+  width: 34px;
+  height: 34px;
+  background: #1F90E6 url('vector.svg') no-repeat center;
+  border-top-right-radius: 7px;
+  transform: rotate(180deg);
+}
+
+.disabledButtonUp {
+  background-color: #B9C3C9;
+  border-bottom-color: #A4B1BF;
+}
+
+.disabledButtonDown {
+  background-color: #B9C3C9;
 }

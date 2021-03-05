@@ -1,27 +1,28 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 
 function Arrows() {
-  useEffect(() => {
-    document.addEventListener('keydown', onKeypress);
-    return () => {
-      document.removeEventListener('keydown', onKeypress);
-    };
-  }, []);
-
   const onKeypress = useCallback((e: any) => {
     e.preventDefault();
-    if (e.code === 'ArrowUp' || e.target.id === 'up') {
+    if (e.target.id === 'up' || e.code === 'ArrowUp') {
       console.log(111);
     }
-    if (e.code === 'ArrowDown' || e.target.id === 'down') {
+    if (e.target.id === 'down' || e.code === 'ArrowDown') {
       console.log(222);
     }
   }, [])
 
+  const addEventList = useCallback((e: any) => {
+    const arrowWrapper = e.target;
+    arrowWrapper?.addEventListener('keydown', onKeypress);
+    return () => {
+      arrowWrapper?.removeEventListener('keydown', onKeypress);
+    };
+  }, [onKeypress]);
+
   return (
-  <div className="wrapper">
-    <div className="button" id={'up'} onClick={onKeypress}>123</div>
-    <div className="button" id={'down'} onClick={onKeypress} >345</div>
+  <div className="wrapper" tabIndex={0} onKeyDown={addEventList}>
+    <div className={"buttonUp"} id={'up'} onClick={onKeypress}></div>
+    <div className="buttonDown" id={'down'} onClick={onKeypress} ></div>
   </div>
   )
 }

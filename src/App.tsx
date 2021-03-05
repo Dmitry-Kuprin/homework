@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import Arrows from './Arrows';
 import Films from './Films';
 import Favorites from './Favorites';
 
 
 function App() {
-  const favorites = useSelector((state: string[]) => state);
-  
   return (
     <div className="App">
-      <Arrows />
       <Films />
       <Favorites />
       

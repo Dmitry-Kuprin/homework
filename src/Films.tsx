@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFilm, setFilm } from './redux/actions';
+import { getFilms, removeFilm, setFilm } from './redux/actions';
 
 function Films() {
-  const films = [{name: 'Mist', date: '12.05.2004'}, {name: '1408', date: '8.11.2016'}, {name: 'Alien', date: '22.09.1978'}]
   const dispatch = useDispatch();
+  useMemo(() => dispatch(getFilms()), [dispatch]);
+  const films = useSelector((state: any) => state.films.films);
   function addFilm(e: any) {
     dispatch(setFilm(e.target.name));
   }
@@ -14,7 +15,7 @@ function Films() {
 
   return (
     <>
-      {films.map(item => (
+      {films?.map((item: any) => (
         <>
           <div>{item.name}</div>
           <div>{item.date}</div>

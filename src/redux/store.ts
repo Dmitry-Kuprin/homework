@@ -1,17 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { filmReducer } from './reducers';
 import thunkMiddleware from 'redux-thunk';
+import { filmReducer, favoritesReducer } from './reducers';
 
-// const preloadedState = [];
 
-const store = createStore((filmReducer),
-  
+const store = createStore(combineReducers({
+  films: filmReducer,
+  favorites: favoritesReducer,
+}),
   composeWithDevTools(applyMiddleware(thunkMiddleware)),
 );
-
-store.subscribe(() => {
-  window.localStorage.setItem('redux', JSON.stringify(store.getState()));
-});
 
 export default store;
